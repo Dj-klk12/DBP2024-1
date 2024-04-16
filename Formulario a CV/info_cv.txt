@@ -1,0 +1,13 @@
+nombre_apellidos: Frank Eduardo Calcina Arias
+fecha_nacimiento: 2002-08-29
+ocupacion: Estudiante
+contacto: 948065411
+nacionalidad: Perú
+ingles: basico
+lenguajes_programacion: python
+lenguajes_programacion: javascript
+lenguajes_programacion: cplusplus
+aptitudes: Organización
+habilidades[]: Habilidad 1
+perfil: Estudiante de cuarto semestre de Ciencias de la Computación. Me destaco por mi capacidad para trabajar en equipo, comunicarme eficazmente.
+
