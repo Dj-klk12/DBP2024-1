@@ -6,27 +6,26 @@ body {
 }
 
 .container {
-    max-width: 600px;
-    margin: 0 auto;
+    width: 80%;
+    margin: 20px auto;
     background-color: #789790;
-    padding:    30px;
-    border-radius: 45px;    
+    padding: 30px;
+    border-radius: 10px;
     box-shadow: 0 0 10px rgba(189, 235, 23, 0.842);
-}
-
-h1 {
-    text-align: center;
-    margin-top: 20px;
-    color: #000000;
+    display: flex;
+    flex-direction: column;
 }
 
 .form-group {
     margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 label {
-    display: block;
-    margin-bottom: 5px;
+    flex: 1;
+    margin-right: 10px;
     font-weight: bold;
     color: #000000;
 }
@@ -37,14 +36,17 @@ input[type="email"],
 input[type="tel"],
 select,
 textarea {
-    width: 100%;
-    padding: 6px;
+    flex: 2;
+    padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid #ff0101;
+    border: 2px solid #ff0101;
     border-radius: 4px;
+    box-sizing: border-box;
+    color: #000000; 
 }
 
-.radio-group, .checkbox-group {
+.radio-group,
+.checkbox-group {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -58,14 +60,15 @@ input[type="checkbox"] {
 
 input[type="submit"] {
     background-color: #238333;
-    color: #000000;
+    color: #ffffff;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 4px;
     font-size: 16px;
+    transition: background-color 0.3s ease;
 }
 
 input[type="submit"]:hover {
-    background-color: #ffffff;
+    background-color: #1a682b;
 }
