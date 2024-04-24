@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Formulario dinámico</title>
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -59,29 +59,22 @@
         <input type="text" id="direccion" name="direccion" required>
     </div>
 
-    <div class="input-group">
+    <div class="input-group" id="experiencia_container">
         <label for="experiencia">Experiencia Laboral:</label>
-        <input type="text" id="experiencia" name="experiencia" required>
+        <input type="text" id="experiencia" name="experiencia[]" required>
+        <button type="button" class="add-field-button">Agregar Otra Experiencia</button>
     </div>
 
-    <div class="input-group">
+    <div class="input-group" id="formacion_container">
         <label for="formacion">Formación:</label>
-        <input type="text" id="formacion" name="formacion" required>
+        <input type="text" id="formacion" name="formacion[]" required>
+        <button type="button" class="add-field-button">Agregar Otra Formación</button>
     </div>
 
-    <div class="input-group">
+    <div class="input-group" id="idiomas_container">
         <label for="idiomas">Idiomas:</label>
-        <input type="text" id="idiomas" name="idiomas" required>
-        <div class="radio-group">
-            <label for="basico">Básico</label>
-            <input type="radio" id="basico" name="ingles" value="basico">
-            <label for="intermedio">Intermedio</label>
-            <input type="radio" id="intermedio" name="ingles" value="intermedio">
-            <label for="avanzado">Avanzado</label>
-            <input type="radio" id="avanzado" name="ingles" value="avanzado">
-            <label for="fluido">Fluido</label>
-            <input type="radio" id="fluido" name="ingles" value="fluido">
-        </div>
+        <input type="text" id="idiomas" name="idiomas[]" required>
+        <button type="button" class="add-field-button">Agregar Otro Idioma</button>
     </div>
 
     <div class="input-group">
@@ -128,9 +121,7 @@
 
     
 <div id="cvContent" style="display: none; background-color: #FAF3E0; padding: 40px; border-radius: 8px; margin-top: 40px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); display: flex;">
-    <div style="flex: 1; padding-right: 20px; border-right: 2px solid #2ad4be;">
-        <img src="https://canadian-passport-support.com/wp-content/uploads/2014/09/businessman.png" alt="Foto de José Martínez" style="width: 150px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-    </div>
+    
     <div style="flex: 3; padding-left: 20px;">
         <h1 style="color: #333; border-bottom: 2px solid #D1BFA3; padding-bottom: 10px;">Nombre del Usuario</h1>
         <p id="cvFecha_nacimiento" style="color: #555;"><span>📅</span> Fecha_nacimiento: </p>
@@ -173,57 +164,99 @@
     
 <script type="text/javascript">
     function showCV() {
-    var cvContent = document.getElementById('cvContent');
-    var formData = new FormData(document.forms['cvForm']);
-    
-    cvContent.querySelector('h1').innerText = formData.get('nombre');
-    cvContent.querySelector('#cvFecha_nacimiento').innerText = 'Fecha de Nacimiento: ' + formData.get('fecha_nacimiento');
-    cvContent.querySelector('#cvTelefono').innerText = 'Teléfono: ' + formData.get('telefono');
-    cvContent.querySelector('#cvCorreo').innerText = 'Correo: ' + formData.get('correo');
-    cvContent.querySelector('#cvNacionalidad').innerText = 'Nacionalidad: ' + formData.get('nacionalidad');
-    cvContent.querySelector('#cvDireccion').innerText = 'Dirección: ' + formData.get('direccion');
-    
-    cvContent.querySelector('#cvExperiencia').innerText = formData.get('experiencia');
-    cvContent.querySelector('#cvFormacion').innerText = formData.get('formacion');
-    
-    // Obtener idioma y nivel seleccionados
-    var idioma = formData.get('idiomas');
-    var nivel = '';
-    var nivelSeleccionado = formData.get('ingles');
-    if (nivelSeleccionado) {
-        switch (nivelSeleccionado) {
-            case 'basico':
-                nivel = 'Básico';
-                break;
-            case 'intermedio':
-                nivel = 'Intermedio';
-                break;
-            case 'avanzado':
-                nivel = 'Avanzado';
-                break;
-            case 'fluido':
-                nivel = 'Fluido';
-                break;
-            default:
-                nivel = 'No especificado';
-        }
+        var cvContent = document.getElementById('cvContent');
+        var formData = new FormData(document.forms['cvForm']);
+        
+        cvContent.querySelector('h1').innerText = formData.get('nombre');
+        cvContent.querySelector('#cvFecha_nacimiento').innerText = 'Fecha de Nacimiento: ' + formData.get('fecha_nacimiento');
+        cvContent.querySelector('#cvTelefono').innerText = 'Teléfono: ' + formData.get('telefono');
+        cvContent.querySelector('#cvCorreo').innerText = 'Correo: ' + formData.get('correo');
+        cvContent.querySelector('#cvNacionalidad').innerText = 'Nacionalidad: ' + formData.get('nacionalidad');
+        cvContent.querySelector('#cvDireccion').innerText = 'Dirección: ' + formData.get('direccion');
+        
+        // Experiencia laboral
+        var experienciaItems = formData.getAll('experiencia[]');
+        var experienciaHTML = '';
+        experienciaItems.forEach(function(item) {
+            experienciaHTML += '<li>' + item + '</li>';
+        });
+        cvContent.querySelector('#cvExperiencia').innerHTML = experienciaHTML;
+        
+        // Formación
+        var formacionItems = formData.getAll('formacion[]');
+        var formacionHTML = '';
+        formacionItems.forEach(function(item) {
+            formacionHTML += '<li>' + item + '</li>';
+        });
+        cvContent.querySelector('#cvFormacion').innerHTML = formacionHTML;
+        
+        // Idiomas
+        var idiomasItems = formData.getAll('idiomas[]'); 
+        var idiomasHTML = ''; 
+        idiomasItems.forEach(function(item) {
+            idiomasHTML += '<li>' + item + '</li>'; 
+        });
+        cvContent.querySelector('#cvIdiomas').innerHTML = idiomasHTML; 
+        
+        cvContent.querySelector('#cvLenguajes_programacion').innerText = Array.from(formData.getAll('lenguajes_programacion')).join(', ');
+        cvContent.querySelector('#cvAptitudes').innerText = formData.get('aptitudes');
+        
+        var habilidadesItems = formData.getAll('habilidades[]');
+        var habilidadesHTML = '';
+        habilidadesItems.forEach(function(item) {
+            habilidadesHTML += '<li>' + item + '</li>';
+        });
+        cvContent.querySelector('#cvHabilidades').innerHTML = habilidadesHTML;
+        
+        cvContent.style.display = 'block';
+        return false;
     }
-    
-    // Mostrar idioma y nivel en la sección correspondiente del CV
-    cvContent.querySelector('#cvIdiomas').innerText = idioma + ' - ' + nivel;
-    
-    cvContent.querySelector('#cvLenguajes_programacion').innerText = Array.from(formData.getAll('lenguajes_programacion')).join(', ');
-    cvContent.querySelector('#cvAptitudes').innerText = formData.get('aptitudes');
-    cvContent.querySelector('#cvHabilidades').innerText = formData.getAll('habilidades[]').join(', ');
-
-    cvContent.style.display = 'block';
-    return false;
-    }
-
-
-
-
 </script>
 
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("cv_form");
+
+        const addFieldButtons = document.querySelectorAll(".add-field-button");
+
+        addFieldButtons.forEach(function(button) {
+            button.addEventListener("click", function() {
+                const container = button.parentElement;
+                const inputClone = container.querySelector("input").cloneNode(true);
+                inputClone.value = ""; 
+                container.insertBefore(inputClone, button);
+            });
+        });
+
+        form.addEventListener("input", function (event) {
+            const input = event.target;
+            const isValid = validateInput(input);
+
+            if (!isValid) {
+                input.classList.add("invalid");
+            } else {
+                input.classList.remove("invalid");
+            }
+        });
+
+        form.addEventListener("submit", function (event) {
+            const inputs = form.querySelectorAll("input[required], select[required], textarea[required]");
+
+            inputs.forEach(function (input) {
+                if (!validateInput(input)) {
+                    event.preventDefault();
+                    input.classList.add("invalid");
+                } else {
+                    input.classList.remove("invalid");
+                }
+            });
+        });
+
+        function validateInput(input) {
+            return input.validity.valid;
+        }
+    });
+</script>
 </body>
 </html>
