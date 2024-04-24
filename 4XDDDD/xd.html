@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulario dinámico</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+
+<body>
+    
+<form id="cvForm" onsubmit="return showCV();">
+    <h1>Formulario de CV DINÁMICO</h1>
+    <div class="input-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+    </div>
+
+    <div class="input-group">
+        <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
+    </div>
+
+    <div class="input-group">
+        <label for="telefono">Número de teléfono:</label>
+        <input type="tel" id="telefono" name="telefono" required>
+    </div>
+
+    <div class="input-group">
+        <label for="correo">Correo electrónico:</label>
+        <input type="email" id="correo" name="correo" required>
+    </div>
+
+    <div class="input-group">
+        <label for="nacionalidad">Nacionalidad:</label>
+        <select id="nacionalidad" name="nacionalidad">
+            <option value="selecciona">Selecciona</option>
+            <option value="Honduras">Honduras</option>
+            <option value="Guatemala">Guatemala</option>
+            <option value="Venezuela">Venezuela</option>
+            <option value="México">México</option>
+            <option value="Nicaragua">Nicaragua</option>
+            <option value="El Salvador">El Salvador</option>
+            <option value="Colombia">Colombia</option>
+            <option value="Bolivia">Bolivia</option>
+            <option value="Perú">Perú</option>
+            <option value="Ecuador">Ecuador</option>
+            <option value="Brasil">Brasil</option>
+            <option value="R. Domi.">R. Domi.</option>
+            <option value="Paraguay">Paraguay</option>
+            <option value="Panamá">Panamá</option>
+            <option value="Costa Rica">Costa Rica</option>
+            <option value="Argentina">Argentina</option>
+            <option value="Chile">Chile</option>
+            <option value="Uruguay">Uruguay</option>
+        </select>
+    </div>
+
+    <div class="input-group">   
+        <label for="direccion">Dirección:</label>
+        <input type="text" id="direccion" name="direccion" required>
+    </div>
+
+    <div class="input-group">
+        <label for="experiencia">Experiencia Laboral:</label>
+        <input type="text" id="experiencia" name="experiencia" required>
+    </div>
+
+    <div class="input-group">
+        <label for="formacion">Formación:</label>
+        <input type="text" id="formacion" name="formacion" required>
+    </div>
+
+    <div class="input-group">
+        <label for="idiomas">Idiomas:</label>
+        <input type="text" id="idiomas" name="idiomas" required>
+        <div class="radio-group">
+            <label for="basico">Básico</label>
+            <input type="radio" id="basico" name="ingles" value="basico">
+            <label for="intermedio">Intermedio</label>
+            <input type="radio" id="intermedio" name="ingles" value="intermedio">
+            <label for="avanzado">Avanzado</label>
+            <input type="radio" id="avanzado" name="ingles" value="avanzado">
+            <label for="fluido">Fluido</label>
+            <input type="radio" id="fluido" name="ingles" value="fluido">
+        </div>
+    </div>
+
+    <div class="input-group">
+        <label for="lenguajes_programacion">Lenguajes de Programación:</label>
+        <select id="lenguajes_programacion" name="lenguajes_programacion" multiple>
+            <option value="java">Java</option>
+            <option value="python">Python</option>
+            <option value="javascript">JavaScript</option>
+            <option value="csharp">C#</option>
+            <option value="cplusplus">C++</option>
+            <option value="php">PHP</option>
+            <option value="Pearl">Pearl</option>
+        </select>
+    </div>
+
+    <div class="input-group">
+        <label for="aptitudes">Aptitudes:</label>
+        <input type="text" id="aptitudes" name="aptitudes" required>
+        <datalist id="aptitudes_list">
+            <option value="Multilingüismo">
+            <option value="Organización">
+            <option value="Liderazgo">
+        </datalist>
+    </div>
+
+    <div class="input-group">
+        <label>Habilidades:</label>
+        <div class="checkbox-group">
+            <label for="habilidad1">Trabajo en equipo</label>
+            <input type="checkbox" id="habilidad1" name="habilidades[]" value="Habilidad 1">
+            <label for="habilidad2">Pensamiento crítico</label>
+            <input type="checkbox" id="habilidad2" name="habilidades[]" value="Habilidad 2">
+            <label for="habilidad3">Orientación a resultados</label>
+            <input type="checkbox" id="habilidad3" name="habilidades[]" value="Habilidad 3">
+            <label for="habilidad3">Orden en el trabajo</label>
+            <input type="checkbox" id="habilidad4" name="habilidades[]" value="Habilidad 4">
+        </div>
+    </div>
+
+    <div class="submit-btn">
+        <input type="submit" value="Enviar">
+    </div>
+</form>
+
+    
+<div id="cvContent" style="display: none; background-color: #FAF3E0; padding: 40px; border-radius: 8px; margin-top: 40px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); display: flex;">
+    <div style="flex: 1; padding-right: 20px; border-right: 2px solid #2ad4be;">
+        <img src="https://canadian-passport-support.com/wp-content/uploads/2014/09/businessman.png" alt="Foto de José Martínez" style="width: 150px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    </div>
+    <div style="flex: 3; padding-left: 20px;">
+        <h1 style="color: #333; border-bottom: 2px solid #D1BFA3; padding-bottom: 10px;">Nombre del Usuario</h1>
+        <p id="cvFecha_nacimiento" style="color: #555;"><span>📅</span> Fecha_nacimiento: </p>
+        <p id="cvTelefono" style="color: #555;"><span>📞</span> Teléfono: </p>
+        <p id="cvCorreo" style="color: #555;"><span>📧</span> Correo: </p>
+        <p id="cvNacionalidad" style="color: #555;"><span>🌍</span> Nacionalidad: </p>
+        <p id="cvDireccion" style="color: #555;"><span>📍</span> Dirección: </p>
+        <section style="margin-top: 20px;">
+            <h2 style="color: #7A6652;">  Experiencia Laboral</h2>
+            <p id="cvExperiencia" style="color: #555;"></p>
+        </section>
+
+        <section style="margin-top: 20px;">
+            <h2 style="color: #7A6652;">Formación</h2>
+            <p id="cvFormacion" style="color: #555;"></p>
+        </section>
+
+        <section style="margin-top: 20px;">
+            <h2 style="color: #7A6652;">Idiomas</h2>
+            <p id="cvIdiomas" style="color: #555;"></p>
+        </section>
+
+        <section style="margin-top: 20px;">
+            <h2 style="color: #7A6652;">  Lenguajes de Programación</h2>
+            <p id="cvLenguajes_programacion" style="color: #555;"></p>
+        </section>
+
+        <section style="margin-top: 20px;">
+            <h2 style="color: #7A6652;">Aptitudes</h2>
+            <p id="cvAptitudes" style="color: #555;"></p>
+        </section>
+
+        <section style="margin-top: 20px;">
+            <h2 style="color: #7A6652;">  Habilidades</h2>
+            <p id="cvHabilidades" style="color: #555;"></p>
+        </section>
+    </div>
+</div>
+
+    
+<script type="text/javascript">
+    function showCV() {
+    var cvContent = document.getElementById('cvContent');
+    var formData = new FormData(document.forms['cvForm']);
+    
+    cvContent.querySelector('h1').innerText = formData.get('nombre');
+    cvContent.querySelector('#cvFecha_nacimiento').innerText = 'Fecha de Nacimiento: ' + formData.get('fecha_nacimiento');
+    cvContent.querySelector('#cvTelefono').innerText = 'Teléfono: ' + formData.get('telefono');
+    cvContent.querySelector('#cvCorreo').innerText = 'Correo: ' + formData.get('correo');
+    cvContent.querySelector('#cvNacionalidad').innerText = 'Nacionalidad: ' + formData.get('nacionalidad');
+    cvContent.querySelector('#cvDireccion').innerText = 'Dirección: ' + formData.get('direccion');
+    
+    cvContent.querySelector('#cvExperiencia').innerText = formData.get('experiencia');
+    cvContent.querySelector('#cvFormacion').innerText = formData.get('formacion');
+    
+    // Obtener idioma y nivel seleccionados
+    var idioma = formData.get('idiomas');
+    var nivel = '';
+    var nivelSeleccionado = formData.get('ingles');
+    if (nivelSeleccionado) {
+        switch (nivelSeleccionado) {
+            case 'basico':
+                nivel = 'Básico';
+                break;
+            case 'intermedio':
+                nivel = 'Intermedio';
+                break;
+            case 'avanzado':
+                nivel = 'Avanzado';
+                break;
+            case 'fluido':
+                nivel = 'Fluido';
+                break;
+            default:
+                nivel = 'No especificado';
+        }
+    }
+    
+    // Mostrar idioma y nivel en la sección correspondiente del CV
+    cvContent.querySelector('#cvIdiomas').innerText = idioma + ' - ' + nivel;
+    
+    cvContent.querySelector('#cvLenguajes_programacion').innerText = Array.from(formData.getAll('lenguajes_programacion')).join(', ');
+    cvContent.querySelector('#cvAptitudes').innerText = formData.get('aptitudes');
+    cvContent.querySelector('#cvHabilidades').innerText = formData.getAll('habilidades[]').join(', ');
+
+    cvContent.style.display = 'block';
+    return false;
+    }
+
+
+
+
+</script>
+
+</body>
+</html>
