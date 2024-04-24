@@ -1,74 +1,42 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #000000;
-    margin: 0;
-    padding: 0;
+    padding: 40px;
+    background-color: #469beb;
 }
 
-.container {
-    width: 80%;
-    margin: 20px auto;
-    background-color: #789790;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(189, 235, 23, 0.842);
-    display: flex;
-    flex-direction: column;
-}
-
-.form-group {
+.input-group {
     margin-bottom: 20px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
 }
 
 label {
-    flex: 1;
-    margin-right: 10px;
+    display: block;
+    margin-bottom: 8px;
     font-weight: bold;
-    color: #000000;
 }
 
 input[type="text"],
-input[type="date"],
-input[type="email"],
 input[type="tel"],
-select,
-textarea {
-    flex: 2;
+input[type="email"] {
+    width: calc(100% - 22px); 
     padding: 10px;
-    margin-bottom: 10px;
-    border: 2px solid #ff0101;
+    border: 1px solid #9dff00;
     border-radius: 4px;
-    box-sizing: border-box;
-    color: #000000; 
+    margin-bottom: 10px; 
 }
 
-.radio-group,
-.checkbox-group {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: #fc0202;
-}
-
-input[type="radio"],
-input[type="checkbox"] {
-    margin-right: 5px;
+.submit-btn {
+    text-align: center;
 }
 
 input[type="submit"] {
-    background-color: #238333;
-    color: #ffffff;
-    border: none;
     padding: 10px 20px;
-    cursor: pointer;
+    border: none;
     border-radius: 4px;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
+    background-color: #c91b1b;
+    color: #fff;
+    cursor: pointer;
 }
 
 input[type="submit"]:hover {
-    background-color: #1a682b;
+    background-color: #555;
 }
